@@ -1,3 +1,9 @@
+@import 'primeflex/primeflex.css';
+@import 'primeflex/primeflex.css';
+@import 'primereact/resources/themes/saga-blue/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
 :root {
     --blanco: #ffffff;
     --gris1: #edf2f6;
@@ -109,6 +115,7 @@
   aside  {
     padding: 3rem;
   }
+
   
   .formulario-nuevo-proyecto {
     margin-top: 6rem;
@@ -122,7 +129,7 @@
     color: var(--gris2);
   }
   .proyectos {
-    margin-top: 10rem;
+    margin-top: 8rem;
   }
   .listado-proyectos li {
     margin-bottom: 2rem;
@@ -294,6 +301,7 @@
   }
   
   .contenedor-form {
+      margin-bottom: 20%;
       padding: 5rem 3rem;
       max-width: 500px;
       width: 95%;
@@ -305,27 +313,36 @@
       display: flex;
       margin-bottom: 2rem;
       align-items: center;
+      width: 100%;
+    
   }
   .campo-form:last-of-type {
     margin: 0;
   }
   .campo-form label {
     flex: 0 0 100px;
-    font-family: var(--textFont);
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
   .campo-form input[type="password"],
   .campo-form input[type="email"], 
-  .campo-form input[type="text"] {
+  .campo-form input[type="text"],
+  .inp  {
     border: 1px solid #e1e1e1;
     padding: 1rem;
     flex: 1;
   }
   
+  span a {
+    margin-left: 1%;
+  }
   .enlace-cuenta {
+
     margin-top: 2rem;
     display: block;
     opacity: .7;
   }
+
+  
 
   .alerta {
     position: fixed;
