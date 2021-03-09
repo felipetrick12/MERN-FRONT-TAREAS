@@ -7,7 +7,7 @@ export const Proyecto = ({proyecto}) => {
         <li>
               <Button 
                      label={proyecto.name}  
-                     className="p-button-help mt-5 p-3 btn-block"
+                     className="p-button-info mt-5 p-3 btn-block"
                  />
         </li>
     )

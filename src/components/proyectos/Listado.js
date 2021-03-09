@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Proyecto } from './Proyecto'
+import { AuthContext } from '../../context/AuthContext';
+import { ObtenerProyectos } from '../../actions/actionProyecto';
+
 
 export const Listado = () => {
 
-    const proyectos = [
-        { id:'1',name: 'teinda virtual'},
-        { id:'2',name: 'aprender laravel'},
-        { id:'3',name: 'aprender flluter'}
-    ]
+    const {state,dispatch} = useContext(AuthContext);
+    const { proyectos } = state;
+
+   
+
+    useEffect(() => {
+        dispatch(ObtenerProyectos())
+    }, [])
+
     return (
         <ul className='listado-proyectos'>
             {

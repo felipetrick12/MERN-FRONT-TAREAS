@@ -4,13 +4,16 @@ import { NuevoProyecto } from '../proyectos/NuevoProyecto'
 
 
 export const SideBar = () => {
+
+  
+  
     return (
         <aside >
              <h1>MERN <span >TASK </span></h1>
 
-            <NuevoProyecto />
+                <NuevoProyecto />
 
-
+        
             <div className="proyectos">
 
                 <h2>Tus Proyectos</h2>

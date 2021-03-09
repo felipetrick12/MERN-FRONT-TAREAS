@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,10 +8,20 @@ import {
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
 import { Proyectos } from './components/proyectos/Proyectos';
+import { AuthContext } from './context/AuthContext';
+import { authReducer } from './context/authReducer';
 
 export const App = () => {
-  return (
 
+      const initState = {
+         proyectos : [],
+          formulario : false
+      }
+
+      const [state, dispatch] = useReducer(authReducer, initState)
+
+  return (
+    <AuthContext.Provider value ={{state , dispatch}}>
     <Router>
         <Switch>
         <Route exact path="/" component={Login}/>
@@ -22,6 +32,7 @@ export const App = () => {
        
       </Switch>
        </Router>
+       </AuthContext.Provider>
    
   )
 }
