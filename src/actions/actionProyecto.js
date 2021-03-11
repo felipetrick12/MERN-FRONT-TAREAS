@@ -17,3 +17,8 @@ export const ObtenerProyectos = () => ({
             type:types.GetProyectos,
             payload : proyectos
 })
+
+export const agregarProyectos = (proyecto) => ({
+      type:types.AddProyecto,
+      payload : proyecto
+})

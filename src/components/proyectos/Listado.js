@@ -10,10 +10,10 @@ export const Listado = () => {
     const { proyectos } = state;
 
    
-
+    console.log(proyectos)
     useEffect(() => {
         dispatch(ObtenerProyectos())
-    }, [])
+    }, [dispatch])
 
     return (
         <ul className='listado-proyectos'>

@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { AuthContext } from '../../context/AuthContext';
-import  {mostarFormulario}  from '../../actions/actionProyecto';
+import  {agregarProyectos, mostarFormulario}  from '../../actions/actionProyecto';
+import uuid from 'react-uuid'
 
 
 
@@ -10,14 +11,15 @@ export const NuevoProyecto = () => {
 
     //utilizar el context
     const {state,dispatch} = useContext(AuthContext);
-    const { formulario } = state;
+    const { formulario,proyectos } = state;
     
 
     const [proyecto, setProyecto] = useState({
-        nombre: ''
+        id: uuid(),
+        name: ''
 
     });
-    const {nombre}=proyecto;
+    const {name}=proyecto;
 
     const handleChange =(e) => {
       setProyecto({
@@ -28,11 +30,20 @@ export const NuevoProyecto = () => {
 
     const handleSubmit =(e) => {
         e.preventDefault();
-       console.log(proyecto)
+
+        if(name.trim() === '') return;
+
+        
+        dispatch(agregarProyectos(proyecto))
+        setProyecto({
+            id:'',
+            name: ''
+        })
+       console.log(proyectos)
     }
 
     const handleClick =() => {
-            dispatch( mostarFormulario())
+        dispatch( mostarFormulario())
     }
 
     return (
@@ -54,8 +65,8 @@ export const NuevoProyecto = () => {
                                className=" inp p-3"
                                type="text" 
                                placeholder="Nombre Proyecto"
-                               name="nombre"
-                               value={nombre}
+                               name="name"
+                               value={name}
                                onChange={handleChange}
                        />
                      </div>

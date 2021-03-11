@@ -13,9 +13,11 @@ import { authReducer } from './context/authReducer';
 
 export const App = () => {
 
+
+
       const initState = {
          proyectos : [],
-          formulario : false
+         formulario : false
       }
 
       const [state, dispatch] = useReducer(authReducer, initState)
