@@ -7,28 +7,28 @@ import { NuevoProyecto } from '../proyectos/NuevoProyecto'
 export const SideBar = () => {
 
     
-    const [menu, setMenu] = useState(false)
+    const [menu, setMenu] = useState(true)
     
    
     const handleClick =() => {
-         setMenu(true)
+         setMenu(false)
 
     }
     const handleDoubleClick =() => {
-        setMenu(false)
+        setMenu(true)
     }
     return (
         <>
-       <a
+       <button
        onClick={handleClick}
        onDoubleClick={handleDoubleClick}
-       style={{ 'position':'absolute', 'margin': '10px'}}
+       style={{ 'position':'absolute', 'margin': '10px', 'background':'#00000000','border':'none'}}
        >
            <i 
            className="pi pi-bars" 
            style={{'fontSize': '2em'}} 
            />
-    </a> 
+    </button> 
 
     { menu ? 
             

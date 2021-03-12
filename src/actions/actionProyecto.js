@@ -33,3 +33,5 @@ export const eliminarProyectos = (id) => ({
       type:types.DeleteProyecto,
       payload : id
 })
+
+

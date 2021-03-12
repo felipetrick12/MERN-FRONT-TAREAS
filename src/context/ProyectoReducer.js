@@ -1,7 +1,7 @@
 import { types } from "../types/types"
 
 
-export const authReducer = (state, action) =>
+export const ProyectoReducer = (state, action) =>
 {
         switch (action.type) {
             case types.ShowFormulario:

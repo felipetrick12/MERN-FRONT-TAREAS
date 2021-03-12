@@ -6,5 +6,7 @@ export const types= {
     AddProyecto: '[auth] add proyecto',
     SelectProyecto: '[auth] select proyecto',
     DeleteProyecto : '[auth] delete proyecto',
+
+    GetTareas : '[auth] get tareas',
    
 }
