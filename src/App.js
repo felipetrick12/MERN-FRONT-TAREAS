@@ -17,7 +17,8 @@ export const App = () => {
 
       const initState = {
          proyectos : [],
-         formulario : false
+         formulario : false,
+         proyecto: null
       }
 
       const [state, dispatch] = useReducer(authReducer, initState)

@@ -22,3 +22,14 @@ export const agregarProyectos = (proyecto) => ({
       type:types.AddProyecto,
       payload : proyecto
 })
+
+export const seleccionProyectos = (proyecto) => ({
+      type:types.SelectProyecto,
+      payload : proyecto
+})
+
+
+export const eliminarProyectos = (id) => ({
+      type:types.DeleteProyecto,
+      payload : id
+})

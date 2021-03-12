@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 
 export const Tarea = ({tarea}) => {
     return (
-        <li className="tarea sombra text-center">
+        <li className="tarea sombra ">
              <p>{tarea.nombre} </p>
              <div className="estado">
                 {tarea.estado 
@@ -30,12 +30,12 @@ export const Tarea = ({tarea}) => {
             <div className="acciones">
                     <Button 
                     label="Editar"  
-                    className="btn-primario"
+                    className="btn-primario mt-1 "
                     />
 
                     <Button 
                     label="Eliminar"  
-                    className="btn-secundario mx-2"
+                    className="btn-secundario mx-2 mt-1 text-dark"
                     />
                     
             </div>

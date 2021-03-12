@@ -3,6 +3,7 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { AuthContext } from '../../context/AuthContext';
 import  {agregarProyectos, mostarFormulario}  from '../../actions/actionProyecto';
+import {ErrorMensaje} from '../../hook/ErrorMensaje'
 import uuid from 'react-uuid'
 
 
@@ -11,14 +12,15 @@ export const NuevoProyecto = () => {
 
     //utilizar el context
     const {state,dispatch} = useContext(AuthContext);
-    const { formulario,proyectos } = state;
+    const { formulario } = state;
     
-
+    const [error, setError] = useState(false);
     const [proyecto, setProyecto] = useState({
         id: uuid(),
         name: ''
 
     });
+
     const {name}=proyecto;
 
     const handleChange =(e) => {
@@ -31,15 +33,22 @@ export const NuevoProyecto = () => {
     const handleSubmit =(e) => {
         e.preventDefault();
 
-        if(name.trim() === '') return;
+        if(name.trim()===''){
+            setError(true)
+        }else {
+            setError(false)
+        }
 
-        
+        if(name.trim() === '')return;
+
+
         dispatch(agregarProyectos(proyecto))
+
         setProyecto({
             id:'',
             name: ''
         })
-       console.log(proyectos)
+       
     }
 
     const handleClick =() => {
@@ -80,6 +89,8 @@ export const NuevoProyecto = () => {
             ):null
         
         }
+
+        { error ? <ErrorMensaje mensaje={'Ingrese nombre de proyecto'} clas={'alert-secondary'}/> : null}
              
             
         </>

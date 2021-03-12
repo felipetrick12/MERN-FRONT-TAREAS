@@ -1,9 +1,6 @@
 import { types } from "../types/types"
 
 
-
-
-
 export const authReducer = (state, action) =>
 {
         switch (action.type) {
@@ -20,7 +17,19 @@ export const authReducer = (state, action) =>
                 case types.AddProyecto :
                     return {
                         ...state, 
-                        proyectos: [action.payload,...state.proyectos]
+                        proyectos: [action.payload,...state.proyectos],
+                        formulario: false
+                    }
+                case types.SelectProyecto: 
+                    return{
+                        ...state,
+                        proyecto : state.proyectos.filter(proyecto=> proyecto.id=== action.payload.id)
+                    }
+                case types.DeleteProyecto:
+                    return{
+                        ...state,
+                        proyectos: state.proyectos.filter(proyecto=> proyecto.id !== action.payload),
+                        proyecto: null
                     }
                 default:
                 return state;
