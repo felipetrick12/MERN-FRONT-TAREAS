@@ -12,8 +12,8 @@ export const ListadoTarea = () => {
     const {state,dispatch} = useContext(AuthContext);
     const {proyecto} = state;
 
-    const {stateTarea,dispatchTarea} = useContext(TareaContext);
-    const {tareas} = stateTarea;
+    const {stateTarea} = useContext(TareaContext);
+    const {tareasProyecto} = stateTarea;
     
     
     if(!proyecto) return <h2>Selecciona un Proyecto</h2>;
@@ -24,26 +24,23 @@ export const ListadoTarea = () => {
         
     }
     
-   
-    
 
     return (
         <>
         <h2>Proyecto: {proyecto[0].name}</h2>
 
         <ul className="listado-tareas">
-           
-                    
-                {/* {   tareas.length === 0 
+        
+                {   tareasProyecto.length === 0 
                         ? 
                         (<li className="tarea"><p>No hay tareas</p></li>)
-                        : tareas.map(tarea => (
+                        : tareasProyecto.map(tarea => (
                         <Tarea 
                             key ={tarea.id}
                             tarea={tarea}
                         />
                 ))
-                } */}
+                }
         
         </ul>
 

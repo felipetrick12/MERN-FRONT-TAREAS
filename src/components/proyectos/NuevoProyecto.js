@@ -16,9 +16,7 @@ export const NuevoProyecto = () => {
     
     const [error, setError] = useState(false);
     const [proyecto, setProyecto] = useState({
-        id: uuid(),
         name: ''
-
     });
 
     const {name}=proyecto;
@@ -42,10 +40,10 @@ export const NuevoProyecto = () => {
         if(name.trim() === '')return;
 
 
+        proyecto.id= uuid();
         dispatch(agregarProyectos(proyecto))
 
         setProyecto({
-            id:'',
             name: ''
         })
        

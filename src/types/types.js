@@ -8,5 +8,7 @@ export const types= {
     DeleteProyecto : '[auth] delete proyecto',
 
     GetTareas : '[auth] get tareas',
+    AddTareas : '[auth] add tareas',
+    DeleteTareas : '[auth] delete tareas',
    
 }
