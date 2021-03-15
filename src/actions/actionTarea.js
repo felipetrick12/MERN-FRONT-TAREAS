@@ -17,3 +17,20 @@ export const crearTareas = (tarea)=> ({
         type: types.DeleteTareas,
         payload : tareaID
  })
+
+ export const cambiarEstadoTarea = (tarea)=> ({
+        type: types.estadoTareas,
+        payload : tarea
+
+ })
+
+ export const selecionarTarea = (tarea)=> ({
+        type: types.selectTarea,
+        payload : tarea
+
+ })
+
+ export const editarTarea = (tarea)=> ({
+        type: types.editarTarea,
+        payload : tarea
+ })
