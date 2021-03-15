@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { AuthContext } from '../../context/AuthContext';
 import { ErrorMensaje } from '../../hook/ErrorMensaje';
 import { TareaContext } from '../../context/TareaContext';
-import { crearTareas, obtenerTareas } from '../../actions/actionTarea';
+import { crearTareas, obtenerTareas, editarTarea } from '../../actions/actionTarea';
 import uuid from 'react-uuid';
 
 
@@ -15,15 +15,29 @@ export const FormTarea = () => {
     const {proyecto} = state;
 
     //infromacion del context tarea 
-    const {dispatchTarea} = useContext(TareaContext);
+    const {stateTarea,dispatchTarea} = useContext(TareaContext);
+    const {tareaSeleccionada}=stateTarea;
 
-    
     //creando estado del formulario
     const [tarea, setTarea] = useState({
         nombre: ''
     });
-
     const {nombre} = tarea;
+    
+    //effect para detectar si hay una tarea seleccionada
+    useEffect(() => {
+       
+        if(tareaSeleccionada !== null){
+            setTarea(tareaSeleccionada)
+        }
+        else {
+            setTarea ({
+                nombre : ''
+            })
+        }
+    }, [tareaSeleccionada])
+    
+    
 
     //validacion del formualrio
     const [error, setError] = useState(false);
@@ -45,11 +59,18 @@ export const FormTarea = () => {
             setError(false)
         }
 
-        tarea.id = uuid();
-        tarea.proyectoID = proyecto[0].id;
-        tarea.estado=false;
-        dispatchTarea(crearTareas(tarea));
-        dispatchTarea(obtenerTareas(proyecto[0].id))
+        if(tareaSeleccionada === null){
+            tarea.id = uuid();
+            tarea.proyectoID = proyecto[0].id;
+            tarea.estado=false;
+            dispatchTarea(crearTareas(tarea));
+           
+        }else {
+
+            dispatchTarea(editarTarea(tarea))
+        }
+        
+        dispatchTarea(obtenerTareas(proyecto[0].id));
 
         setTarea({
             nombre: ''
@@ -78,7 +99,7 @@ export const FormTarea = () => {
   
                    <div className="contenedor-input">
                           <Button 
-                          label="Crear Tarea"  
+                          label={ tareaSeleccionada ? "Editar Tarea" :"Crear Tarea"}  
                           className="p-button-info mt-5 p-3 btn-block"
                           />
                    </div>

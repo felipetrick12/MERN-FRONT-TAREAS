@@ -18,7 +18,19 @@ export const TareasReducer = (state, action) => {
                     return {
                         ...state,
                         tareas: state.tareas.filter(tarea => tarea.id !== action.payload)
-                    }    
+                    }  
+            case types.editarTarea:
+            case types.estadoTareas:
+                    return {
+                         ...state,
+                         tareas: state.tareas.map(tarea => tarea.id===action.payload.id ? action.payload : tarea),
+                         tareaSeleccionada:null
+                    }      
+            case types.selectTarea:
+                 return {
+                    ...state,
+                    tareaSeleccionada: action.payload
+                 }  
             default:
                 
                return state;
