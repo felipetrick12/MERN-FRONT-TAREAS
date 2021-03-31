@@ -1,9 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Link } from "react-router-dom";
+import { AuthContext } from '../../context/auth/AuthContext';
+import Swee from "sweetalert2";
 
-export const Login = () => {
+
+export const Login = (props) => {
+    //state de authenticacion importar
+    const  {autenticado,startLogin} = useContext(AuthContext);
+
+    //si el usuario ingresa exitosamente
+    useEffect( () => {
+        setTimeout(() => {
+            if(autenticado){
+                 props.history.push('/proyectos')
+             }
+        }, 1000);
+        
+     }, [autenticado, props.history])
+     
 
     const [usuario, setUsuario] = useState({
         email: '',
@@ -23,6 +39,16 @@ export const Login = () => {
     const handleSubmit =(e)=> {
         e.preventDefault();
 
+        if( email.trim() === '' || password.trim() === '' ){
+            Swee.fire('Error', 'Campos Obligatorios','error')
+        }
+        else
+        {
+            startLogin( {
+                email,
+                password
+            })
+        }
     }
         return (
             <div className="form-usuario">

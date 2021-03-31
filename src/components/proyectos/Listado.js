@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { Proyecto } from './Proyecto'
-import { AuthContext } from '../../context/AuthContext';
+import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
 import { ObtenerProyectos } from '../../actions/actionProyecto';
 import { ErrorMensaje } from '../../hook/ErrorMensaje';
 
 
 export const Listado = () => {
 
-    const {state,dispatch} = useContext(AuthContext);
+    const {state,dispatch} = useContext(ProyectoContext);
     const { proyectos } = state;
 
    

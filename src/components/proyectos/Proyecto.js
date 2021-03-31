@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
 import { Button } from 'primereact/button';
 import { seleccionProyectos } from '../../actions/actionProyecto';
 import { obtenerTareas } from '../../actions/actionTarea';
-import { TareaContext } from '../../context/TareaContext';
+import { TareaContext } from '../../context/tareas/TareaContext';
 
 
 export const Proyecto = ({proyecto}) => {
 
-    const {dispatch} = useContext(AuthContext);
+    const {dispatch} = useContext(ProyectoContext);
     const {dispatchTarea} = useContext(TareaContext);
 
         const handleClick = ()=> {

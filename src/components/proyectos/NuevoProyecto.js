@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { AuthContext } from '../../context/AuthContext';
+import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
 import  {agregarProyectos, mostarFormulario}  from '../../actions/actionProyecto';
 import {ErrorMensaje} from '../../hook/ErrorMensaje'
 import uuid from 'react-uuid'
@@ -11,7 +11,7 @@ import uuid from 'react-uuid'
 export const NuevoProyecto = () => {
 
     //utilizar el context
-    const {state,dispatch} = useContext(AuthContext);
+    const {state,dispatch} = useContext(ProyectoContext);
     const { formulario } = state;
     
     const [error, setError] = useState(false);

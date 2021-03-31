@@ -8,20 +8,23 @@ import {
   import { Login } from '../components/auth/Login';
   import { Register } from '../components/auth/Register';
   import { Proyectos } from '../components/proyectos/Proyectos';
-  import { AuthContext } from '../context/AuthContext';
-  import { TareaContext } from '../context/TareaContext';
+  import { ProyectoContext } from '../context/proyecto/ProyectoContext';
+  import { ProyectoReducer } from '../context/proyecto/ProyectoReducer';
+  import { TareaContext } from '../context/tareas/TareaContext';
+  import { TareasReducer } from '../context/tareas/TareasReducer';
+  import { AuthState } from '../context/auth/AuthState';
+import { PrivateRouter } from './PrivateRouter';
   
-  import { ProyectoReducer } from '../context/ProyectoReducer';
-  import { TareasReducer } from '../context/TareasReducer';
-
+ 
+ 
 export const AppRouter = () => {
 
-    
-    const initProyecto = {
-        proyectos : [],
-        formulario : false,
-        proyecto: null
-     }
+  
+     const initProyecto = {
+      proyectos : [],
+      formulario : false,
+      proyecto: null
+   }
 
      const initTareas = {
        tareas : [ 
@@ -42,24 +45,27 @@ export const AppRouter = () => {
 
      const [state, dispatch] = useReducer(ProyectoReducer, initProyecto);
      const [stateTarea, dispatchTarea] = useReducer(TareasReducer, initTareas);
+     
 
     return (
-        <AuthContext.Provider value ={{state , dispatch}}>
+        <ProyectoContext.Provider value ={{state , dispatch}}>
         <TareaContext.Provider value ={{stateTarea , dispatchTarea}}>
+          <AuthState >
 
                     <Router>
                         <Switch>
                         <Route exact path="/" component={Login}/>
                         <Route exact path="/register" component={Register}/>
-                        <Route exact path="/proyectos" component={Proyectos}/>
+                        <PrivateRouter exact path="/proyectos" component={Proyectos}/>
                     
                         <Redirect to='/' />
                     
                     </Switch>
                     </Router>
 
+         </AuthState>
        </TareaContext.Provider>
-       </AuthContext.Provider>
+       </ProyectoContext.Provider>
    
   )
     

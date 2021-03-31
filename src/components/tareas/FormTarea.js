@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { AuthContext } from '../../context/AuthContext';
+import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
 import { ErrorMensaje } from '../../hook/ErrorMensaje';
-import { TareaContext } from '../../context/TareaContext';
+import { TareaContext } from '../../context/tareas/TareaContext';
 import { crearTareas, obtenerTareas, editarTarea } from '../../actions/actionTarea';
 import uuid from 'react-uuid';
 
@@ -11,7 +11,7 @@ import uuid from 'react-uuid';
 export const FormTarea = () => {
 
     //informacion del context proyecto
-    const {state} = useContext(AuthContext);
+    const {state} = useContext(ProyectoContext);
     const {proyecto} = state;
 
     //infromacion del context tarea 

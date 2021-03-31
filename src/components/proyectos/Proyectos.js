@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Header } from '../layout/Header'
 import { SideBar } from '../layout/SideBar'
 import { FormTarea } from '../tareas/FormTarea'
 import { ListadoTarea } from '../tareas/ListadoTarea'
 
+import { AuthContext } from '../../context/auth/AuthContext'
+
+
+
 export const Proyectos = () => {
+
+    const {authUser} = useContext(AuthContext)
+
+    useEffect(() => {
+        authUser()
+    }, []);
+   
     return (
         <div className="contenedor-app">
             
