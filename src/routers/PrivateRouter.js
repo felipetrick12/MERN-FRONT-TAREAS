@@ -6,14 +6,14 @@ export const PrivateRouter = ({component: Component, ...props}) => {
 
     const {autenticado,authUser,cargando} = useContext(AuthContext)
 
+    
     useEffect(() => {
         authUser()
     }, []);
 
     return (
         <Route {...props} 
-        render={props=> !autenticado && !cargando?
-        (<Redirect to="/" />) : (<Component {...props}/>)}
+        render={props=> !autenticado && !cargando? (<Redirect to="/" />):(<Component {...props}/>)  }
         />
             
         

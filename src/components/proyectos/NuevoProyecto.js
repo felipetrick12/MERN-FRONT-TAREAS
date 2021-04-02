@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
-import  {agregarProyectos, mostarFormulario}  from '../../actions/actionProyecto';
+import  {agregarProyectos, mostarFormulario,ocultarFormulario}  from '../../actions/actionProyecto';
 import {ErrorMensaje} from '../../hook/ErrorMensaje'
-import uuid from 'react-uuid'
+
 
 
 
@@ -13,13 +13,12 @@ export const NuevoProyecto = () => {
     //utilizar el context
     const {state,dispatch} = useContext(ProyectoContext);
     const { formulario } = state;
-    
     const [error, setError] = useState(false);
     const [proyecto, setProyecto] = useState({
-        name: ''
+        nombre: ''
     });
 
-    const {name}=proyecto;
+    const {nombre}=proyecto;
 
     const handleChange =(e) => {
       setProyecto({
@@ -31,20 +30,21 @@ export const NuevoProyecto = () => {
     const handleSubmit =(e) => {
         e.preventDefault();
 
-        if(name.trim()===''){
+        if(nombre.trim()===''){
             setError(true)
         }else {
             setError(false)
         }
 
-        if(name.trim() === '')return;
+        if(nombre.trim() === '')return;
 
 
-        proyecto.id= uuid();
+      
         dispatch(agregarProyectos(proyecto))
+        state.formulario=false;
 
         setProyecto({
-            name: ''
+            nombre: ''
         })
        
     }
@@ -72,8 +72,8 @@ export const NuevoProyecto = () => {
                                className=" inp p-3"
                                type="text" 
                                placeholder="Nombre Proyecto"
-                               name="name"
-                               value={name}
+                               name="nombre"
+                               value={nombre}
                                onChange={handleChange}
                        />
                      </div>

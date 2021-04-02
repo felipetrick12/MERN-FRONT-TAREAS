@@ -14,6 +14,7 @@ export const Tarea = ({tarea}) => {
     
     
     const handleClick =() => {
+        console.log(proyecto)
         dispatchTarea(eliminarTareas(tarea.id));
         dispatchTarea(obtenerTareas(proyecto[0].id))
 

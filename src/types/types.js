@@ -3,6 +3,7 @@
 export const types= {
     
     ShowFormulario : '[auth] show formulario',
+    hideFormulario : '[auth] hide formulario',
 
     //Reducerproyectos
     GetProyectos : '[auth] get proyectos',

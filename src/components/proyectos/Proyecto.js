@@ -20,7 +20,7 @@ export const Proyecto = ({proyecto}) => {
     return (
         <li>
               <Button 
-                     label={proyecto.name}  
+                     label={proyecto.nombre}  
                      className="p-button-info mt-5 p-3 btn-block"
                      onClick={handleClick}
                  />

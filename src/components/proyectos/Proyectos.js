@@ -12,6 +12,7 @@ export const Proyectos = () => {
 
     const {authUser} = useContext(AuthContext)
 
+    
     useEffect(() => {
         authUser()
     }, []);

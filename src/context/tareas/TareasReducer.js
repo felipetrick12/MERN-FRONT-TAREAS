@@ -7,23 +7,23 @@ export const TareasReducer = (state, action) => {
             case types.GetTareas:
                 return {
                     ...state,
-                    tareasProyecto: state.tareas.filter(tarea => tarea.proyectoID == action.payload)
+                    tareasProyecto: state.tareas.tareasProyecto(tarea => tarea.proyectoID == action.payload)
                 }
             case types.AddTareas:
                 return {
                     ...state,
-                    tareas: [action.payload,...state.tareas],
+                    tareasProyecto: [action.payload,...state.tareasProyecto],
                 }
             case types.DeleteTareas:
                     return {
                         ...state,
-                        tareas: state.tareas.filter(tarea => tarea.id !== action.payload)
+                        tareasProyecto: state.tareasProyecto.filter(tarea => tarea.id !== action.payload)
                     }  
             case types.editarTarea:
             case types.estadoTareas:
                     return {
                          ...state,
-                         tareas: state.tareas.map(tarea => tarea.id===action.payload.id ? action.payload : tarea),
+                         tareasProyecto: state.tareasProyecto.map(tarea => tarea.id===action.payload.id ? action.payload : tarea),
                          tareaSeleccionada:null
                     }      
             case types.selectTarea:

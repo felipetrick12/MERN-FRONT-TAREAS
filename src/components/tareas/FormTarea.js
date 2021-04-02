@@ -5,7 +5,6 @@ import { ProyectoContext } from '../../context/proyecto/ProyectoContext';
 import { ErrorMensaje } from '../../hook/ErrorMensaje';
 import { TareaContext } from '../../context/tareas/TareaContext';
 import { crearTareas, obtenerTareas, editarTarea } from '../../actions/actionTarea';
-import uuid from 'react-uuid';
 
 
 export const FormTarea = () => {
@@ -60,9 +59,7 @@ export const FormTarea = () => {
         }
 
         if(tareaSeleccionada === null){
-            tarea.id = uuid();
             tarea.proyectoID = proyecto[0].id;
-            tarea.estado=false;
             dispatchTarea(crearTareas(tarea));
            
         }else {

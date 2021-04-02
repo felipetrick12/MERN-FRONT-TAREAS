@@ -74,7 +74,6 @@ const startLogin = async (data) => {
         //obtenerUsuario
         authUser()
     } catch (error) {
-        localStorage.removeItem('token')
         await  Swal.fire('Error',error.response.data.msg,'error')
     }
 }

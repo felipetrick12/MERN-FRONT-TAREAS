@@ -1,17 +1,35 @@
+import { clienteAxios } from "../config/axios";
 import { types } from "../types/types";
 
 
 
-export const obtenerTareas = (proyectoID)=> ({
-        type: types.GetTareas,
-        payload : proyectoID
-      
-})
+export const obtenerTareas = async (proyectoID)=>{
 
-export const crearTareas = (tarea)=> ({
-        type: types.AddTareas,
-        payload : tarea
- })
+       try {
+              const resultado = await clienteAxios.get('/api/tareas',{params:{proyectoID}})
+           
+              return({
+                     type: types.GetTareas,
+                     payload : proyectoID
+              })
+       } catch (error) {
+              console.log(error.response)
+       }
+} 
+
+export const crearTareas = async (tarea)=> {
+
+       try {
+              const resultado = await clienteAxios.post('/api/tareas/create',{'nombre': tarea.nombre, 'proyecto':tarea.proyectoID})
+           
+              return({
+                     type: types.AddTareas,
+                     payload : resultado.data.tareas
+              })
+       } catch (error) {
+              console.log(error.response)
+       }
+}
 
  export const eliminarTareas = (tareaID)=> ({
         type: types.DeleteTareas,

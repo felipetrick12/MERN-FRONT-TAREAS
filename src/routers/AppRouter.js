@@ -27,17 +27,6 @@ export const AppRouter = () => {
    }
 
      const initTareas = {
-       tareas : [ 
-           {id:1,nombre:'hacer Diseño ',estado:true, proyectoID:1},
-           {id:2,nombre:'hacer electronico ',estado:true, proyectoID:2},
-           {id:3,nombre:'hacer Diseño ',estado:false, proyectoID:3},
-           {id:4,nombre:'hacer algo ',estado:true, proyectoID:1},
-           {id:5,nombre:'hacer electronico ',estado:true, proyectoID:2},
-           {id:6,nombre:'hacer nada ',estado:false, proyectoID:3},
-           {id:7,nombre:'hacer depronto ',estado:true, proyectoID:3},
-           {id:8,nombre:'hacer quizas ',estado:true, proyectoID:2},
-           {id:9,nombre:'hacer talvez ',estado:false, proyectoID:2},
-     ],
        tareasProyecto: null,
        tareaSeleccionada:null,
        

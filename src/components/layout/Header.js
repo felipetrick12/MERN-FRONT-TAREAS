@@ -1,16 +1,10 @@
-import React, {  useContext, useEffect } from 'react'
+import React, {  useContext } from 'react'
 import { AuthContext } from '../../context/auth/AuthContext'
 
 
 export const Header = () => {
 
-    const {usuario,logout,authUser} = useContext(AuthContext)
-
-    
-
-    useEffect(() => {
-        authUser()
-    }, []);
+    const {usuario,logout} = useContext(AuthContext)
 
     const handleClick=()=> {
         logout( )

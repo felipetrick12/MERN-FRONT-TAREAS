@@ -15,10 +15,9 @@ export const ProyectoReducer = (state, action) =>
                         proyectos: action.payload
                     }
                 case types.AddProyecto :
-                    return {
+                   return {
                         ...state, 
                         proyectos: [action.payload,...state.proyectos],
-                        formulario: false
                     }
                 case types.SelectProyecto: 
                     return{
@@ -29,7 +28,7 @@ export const ProyectoReducer = (state, action) =>
                     return{
                         ...state,
                         proyectos: state.proyectos.filter(proyecto=> proyecto.id !== action.payload),
-                        proyecto: null
+                        
                     }
                 default:
                 return state;

@@ -10,10 +10,17 @@ export const Listado = () => {
     const {state,dispatch} = useContext(ProyectoContext);
     const { proyectos } = state;
 
+  
+    useEffect( async () => {
+       
+     dispatch(await ObtenerProyectos())
+
+
+    }, [proyectos]);
+
    
-    useEffect(() => {
-        dispatch(ObtenerProyectos())
-    }, [dispatch])
+   
+
 
     if (proyectos.length=== 0) return <ErrorMensaje mensaje={'Crea un proyecto'} clas={'alert-success'} />;
     
